@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withAuth } from "../lib/Auth";
-import { Link } from "react-router-dom";
 
 import userService from "../lib/user-service";
 import partiesService from "../lib/parties-service";
@@ -12,23 +11,68 @@ class ShowParties extends Component {
     super(props);
 
     this.state = {
-      event: {},
+      party: {},
+      //will set the switch between Join and leave party
       partyJoined: false
     };
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    console.log("worrrrrks");
 
     const { user } = this.props;
 
+    userService
+      .getOne(user._id)
+      .then(currentUser => {
+        console.log("currentUser", currentUser);
+
+        currentUser.attending.forEach(attendingParty => {
+          //checks if the attending party id is equal to the id coming from this.props.match.params.id;
+          console.log("attendingParty", attendingParty);
+          if (attendingParty._id === id) {
+            this.setState({ partyJoined: true });
+          }
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     partiesService
       .getOne(id)
-      .then(event => {
-        this.setState({ event });
+      .then(party => {
+        this.setState({ party }, () => {
+          console.log("party", this.state);
+        });
       })
       .catch(error => console.log(error));
   }
+
+  join = () => {
+    const id = this.props.user._id;
+    const partyId = this.props.match.params.id;
+
+    userService
+      .attendParty(id, partyId)
+      .then(() => {
+        this.setState({ partyJoined: true });
+      })
+      .catch(err => console.log(err));
+  };
+
+  leave = () => {
+    const id = this.props.user._id;
+    const partyId = this.props.match.params.id;
+
+    userService
+      .abandonParty(id, partyId)
+      .then(() => {
+        this.setState({ partyJoined: false });
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     const formatDate = d => {
@@ -42,13 +86,10 @@ class ShowParties extends Component {
       if (mm < 10) {
         mm = "0" + mm;
       }
-
       d = dd + "/" + mm + "/" + yyyy;
-
       return d;
     };
-    const { user } = this.props;
-    const { host, title, description, guestLimit, city, address, date } = this.state.event;
+    const { host, title, description, guestLimit, city, address, date } = this.state.party;
     return (
       <div>
         <div className='container'>
@@ -64,6 +105,28 @@ class ShowParties extends Component {
           <p>{address}</p>
           <p>When:{formatDate(date)}</p>
           <p>{host}</p>
+
+          {this.state.partyJoined ? (
+            <div>
+              <button
+                onClick={() => {
+                  this.leave();
+                }}
+              >
+                Leave Party
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                onClick={() => {
+                  this.join();
+                }}
+              >
+                Join Party
+              </button>
+            </div>
+          )}
         </div>
         <BottomNavbar />
       </div>
