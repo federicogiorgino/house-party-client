@@ -3,6 +3,7 @@ import { withAuth } from "../lib/Auth";
 
 import userService from "../lib/user-service";
 import partiesService from "../lib/parties-service";
+import { Link } from "react-router-dom";
 
 import BottomNavbar from "../components/BottomNavbar";
 
@@ -90,17 +91,30 @@ class ShowParties extends Component {
       return d;
     };
     const { host, title, description, guestLimit, city, address, date, image } = this.state.party;
+
+    const MY_API = "AIzaSyBqaknflCPQt5yCLxe4U8SbQmR_y36kb1g";
+    let url = `https://www.google.com/maps/embed/v1/search?q=${address},+${city}&key=${MY_API}`;
+
     return (
       <div>
-        <div>
-          <img src={image} alt='' height='40%' />
-          <p>Party Name{title}</p>
-          <p>Description{description}</p>
-          <p>Maximum Guests: {guestLimit}</p>
-          <p>Where: {city}</p>
-          <p>{address}</p>
-          <p>When:{formatDate(date)}</p>
-          <p>{host}</p>
+        <div className='event-container'>
+          <div className='img-box'>
+            <img src={image} alt='' height='40%' />
+          </div>
+
+          <div className='event-info'>
+            <p>Party Name: {title}</p>
+            <p>Description: {description}</p>
+            <p>Maximum Guests: {guestLimit}</p>
+            <p>Where: {city}</p>
+            <p>{address}</p>
+            <p>When:{formatDate(date)}</p>
+            <Link to={`/user/${host}`}>{host}</Link>
+          </div>
+
+          <div className='map'>
+            <iframe frameBorder='0' style={{ width: "100%", height: "400px" }} src={url}></iframe>
+          </div>
 
           {this.state.partyJoined ? (
             <div>

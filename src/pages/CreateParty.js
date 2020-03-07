@@ -98,21 +98,19 @@ class CreateParty extends Component {
             </div>
 
             <div className='input-form'>
-              <div className='city-picker'>
-                <label>City: </label>
-                <div>
-                  <select name='city' value={city} onChange={this.handleChange}>
-                    <option value='Rome'>Rome</option>
-                    <option value='Barcelona'>Barcelona</option>
-                    <option value='San Francisco'>San Francisco</option>
-                    <option value='London'>London</option>
-                    <option value='Paris'>Paris</option>
-                    <option value='Berlin'>Berlin</option>
-                    <option value='New York City'>New York City</option>
-                    <option value='Moscow'>Moscow</option>
-                    <option value='Sao Paulo'>Sao Paulo</option>
-                  </select>
-                </div>
+              <label>City: </label>
+              <div>
+                <select name='city' value={city} onChange={this.changeHandler}>
+                  <option value='Rome'>Rome</option>
+                  <option value='Barcelona'>Barcelona</option>
+                  <option value='San Francisco'>San Francisco</option>
+                  <option value='London'>London</option>
+                  <option value='Paris'>Paris</option>
+                  <option value='Berlin'>Berlin</option>
+                  <option value='New York City'>New York City</option>
+                  <option value='Moscow'>Moscow</option>
+                  <option value='Sao Paulo'>Sao Paulo</option>
+                </select>
               </div>
 
               {/* address field */}

@@ -22,39 +22,39 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div>
-        <h1>Login</h1>
-        <div className='login-form'>
-          <form onSubmit={this.handleFormSubmit}>
-            <div>
-              <input
-                type='text'
-                name='username'
-                placeholder='Username'
-                value={username}
-                onChange={this.handleChange}
-              />
+      <div className='bg'>
+        <div className='auth-container'>
+          <h1>Login</h1>
+          <div className='login-form'>
+            <form onSubmit={this.handleFormSubmit}>
+              <div>
+                <input
+                  type='text'
+                  name='username'
+                  placeholder='Username'
+                  value={username}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <input
+                  type='password'
+                  name='password'
+                  placeholder='Password'
+                  value={password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div>
+                <input className='pure-material-button-contained' type='submit' value='Login' />
+              </div>
+            </form>
+            <br />
+            <div className='already-section'>
+              <p>
+                Don't have an account? <Link to={"/signup"}> Signup</Link>
+              </p>
             </div>
-            <div>
-              <input
-                type='password'
-                name='password'
-                placeholder='Password'
-                value={password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div>
-              <button className='btn btn-positive'>
-                <input className='login-btn' type='submit' value='Login' />
-              </button>
-            </div>
-          </form>
-          <br />
-          <div className='already-section'>
-            <p>
-              Don't have an account? <Link to={"/signup"}> Signup</Link>
-            </p>
           </div>
         </div>
       </div>

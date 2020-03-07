@@ -4,9 +4,12 @@ import { withAuth } from "../lib/Auth";
 
 class BottomNav extends Component {
   render() {
-    const { user } = this.props;
+    const { logout, user } = this.props;
     return (
       <nav className='bot-navigation'>
+        <NavLink to={"/"}>
+          <i className='material-icons'>home</i>
+        </NavLink>
         <NavLink to='/parties' exact>
           <i className='material-icons'>view_headline</i>
         </NavLink>
@@ -18,6 +21,10 @@ class BottomNav extends Component {
         <NavLink to={`/user/${user._id}`} exact>
           <i className='material-icons'>account_box</i>
         </NavLink>
+
+        <i onClick={logout} className='material-icons'>
+          exit_to_app
+        </i>
       </nav>
     );
   }

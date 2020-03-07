@@ -24,16 +24,16 @@ class PartyCard extends Component {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
       <div>
-        <div class='container'>
-          <div class='row'>
-            <div class='col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 party-card'>
-              <div class='card'>
-                <div class='image'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 party-card'>
+              <div className='card'>
+                <div className='image'>
                   <img src={image} width='100%' />
                 </div>
 
-                <div class='text'>
-                  <div class='fab'>
+                <div className='text'>
+                  <div className='fab'>
                     {" "}
                     <Link to={`/parties/${_id}`}>&#43; </Link>
                   </div>
@@ -44,10 +44,10 @@ class PartyCard extends Component {
                   </p>
                   <div className='chip-container'>
                     <p>Host</p>
-                    <div class='chip'>
+                    <div className='chip'>
                       <img src='https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg' />
-                      <span class='chip-name'>{host}</span>
-                      <span class='chip-button-close' role='button'>
+                      <span className='chip-name'>{host}</span>
+                      <span className='chip-button-close' role='button'>
                         {" "}
                       </span>
                     </div>
