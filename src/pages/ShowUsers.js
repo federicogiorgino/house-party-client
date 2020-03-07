@@ -57,7 +57,14 @@ class ShowUsers extends Component {
     return (
       <div className='profile-page'>
         <div className='img-container'>
-          <img src={image} alt='Placeholder' />
+          {image ? (
+            <img src={image} alt='Placeholder' />
+          ) : (
+            <img
+              src='https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png'
+              alt='Placeholder'
+            />
+          )}
         </div>
         <div className='profile-details'>
           <div>

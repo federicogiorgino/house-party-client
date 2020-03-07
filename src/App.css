@@ -7,7 +7,9 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.App {
+  background-color: #263238;
+}
 /* BUTTONS */
 .btn-red {
   background-color: #d50000 !important;
@@ -242,7 +244,8 @@ body {
 }
 
 .filter-page h3 {
-  margin-top: 20%;
+  margin-top: 15%;
+  color: whitesmoke;
 }
 .filter-grid {
   display: grid;
@@ -250,9 +253,9 @@ body {
   grid-template-columns: repeat(3, 1fr);
   background-color: #eceff1;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  margin: auto 10px;
+  margin: 20% 10px;
   padding: 10%;
-  margin-bottom: 30%;
+  margin-bottom: 20%;
 }
 
 .img-filter {
@@ -272,6 +275,8 @@ body {
 
 /* NAVBAR */
 .bot-navigation {
+  box-shadow: 1px 1px 1px 1px whitesmoke;
+
   position: fixed;
   left: 0;
   bottom: 0;
@@ -294,7 +299,7 @@ body {
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   margin: 20px;
-  height: 100vh;
+  height: 90vh;
   padding: 5%;
 }
 .img-container img {
@@ -375,6 +380,7 @@ select,
 /* PARTY CARD */
 
 .party-card {
+  background-color: #263238;
 }
 .card {
   display: inline-block;

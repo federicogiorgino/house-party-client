@@ -99,7 +99,15 @@ class ShowParties extends Component {
       <div>
         <div className='event-container'>
           <div className='img-box'>
-            <img src={image} alt='' height='40%' />
+            {image ? (
+              <img src={image} alt='' height='40%' />
+            ) : (
+              <img
+                src='https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/generic_three_quarter_width/public/article-images/127863/embedded-1493821379.jpg?itok=b_14tLV_'
+                alt=''
+                height='40%'
+              />
+            )}
           </div>
 
           <div className='event-info'>

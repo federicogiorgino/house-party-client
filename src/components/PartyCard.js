@@ -23,13 +23,20 @@ class PartyCard extends Component {
   render() {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
-      <div>
+      <div className='party-card'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 party-card'>
               <div className='card'>
                 <div className='image'>
-                  <img src={image} width='100%' />
+                  {image ? (
+                    <img src={image} width='100%' />
+                  ) : (
+                    <img
+                      src='https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/generic_three_quarter_width/public/article-images/127863/embedded-1493821379.jpg?itok=b_14tLV_'
+                      width='100%'
+                    />
+                  )}
                 </div>
 
                 <div className='text'>
