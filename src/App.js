@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Home from "./pages/Home";
@@ -31,7 +31,7 @@ class App extends Component {
           <PrivateRoute exact path='/private' component={Private} />
           <PrivateRoute exact path='/user/:id' component={ShowUsers} />
           <PrivateRoute exact path='/user/edit/:id' component={EditUsers} />
-          <PrivateRoute exact path='/create' component={CreateParty} />
+          <PrivateRoute exact path='/parties/create' component={CreateParty} />
           <PrivateRoute exact path='/parties' component={ListParties} />
           <PrivateRoute exact path='/parties/:id' component={ShowParties} />
         </Switch>

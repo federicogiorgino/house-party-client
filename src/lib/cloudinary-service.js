@@ -1,11 +1,9 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
-
 class Cloudinary {
   constructor() {
     this.auth = axios.create({
-      baseURL: baseUrl,
+      baseURL: process.env.REACT_APP_API_URL,
       withCredentials: true
     });
   }
@@ -16,5 +14,4 @@ class Cloudinary {
 }
 
 const cloudinaryService = new Cloudinary();
-
 export default cloudinaryService;

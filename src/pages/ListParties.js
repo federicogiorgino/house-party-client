@@ -18,12 +18,10 @@ class ListParties extends Component {
   render() {
     return (
       <div className='party-page'>
-        <div>
-          <h3 className='parties-title'>Parties</h3>
-          {this.state.partiesList.map((oneParty, index) => {
-            return <PartyCard key={index} {...oneParty} />;
-          })}
-        </div>
+        <h3>All Parties</h3>
+        {this.state.partiesList.map((oneParty, index) => {
+          return <PartyCard key={index} {...oneParty} />;
+        })}
         <BottomNavbar />
       </div>
     );

@@ -24,48 +24,73 @@ class Signup extends Component {
         <h1>Sign Up</h1>
         <div className='signup-form'>
           <form onSubmit={this.handleFormSubmit}>
-            <div>
-              <label>First Name:</label>
-              <br />
-              <input type='text' name='firstName' value={firstName} onChange={this.handleChange} />
+            <div className='input-container'>
+              {/* <label>First Name:</label> */}
+              <input
+                type='text'
+                name='firstName'
+                placeholder='First Name'
+                value={firstName}
+                onChange={this.handleChange}
+              />
             </div>
-            <div>
-              <label>Last Name:</label>
-              <br />
-              <input type='text' name='lastName' value={lastName} onChange={this.handleChange} />
+            <div className='input-container'>
+              {/* <label>Last Name:</label> */}
+              <input
+                type='text'
+                name='lastName'
+                placeholder='Last Name'
+                value={lastName}
+                onChange={this.handleChange}
+              />
             </div>
-            <div>
-              <label>E-Mail:</label>
-              <br />
-              <input type='email' name='email' value={email} onChange={this.handleChange} />
+            <div className='input-container'>
+              {/* <label>E-Mail:</label> */}
+              <input
+                type='email'
+                name='email'
+                placeholder='E-Mail'
+                value={email}
+                onChange={this.handleChange}
+              />
             </div>
-            <div>
-              <label>Username:</label>
-              <br />
-              <input type='text' name='username' value={username} onChange={this.handleChange} />
+            <div className='input-container'>
+              {/* <label>Username:</label> */}
+              <input
+                type='text'
+                name='username'
+                placeholder='Username'
+                value={username}
+                onChange={this.handleChange}
+              />
             </div>
-            <div>
-              <label>Password:</label>
-              <br />
+            <div className='input-container'>
+              {/* <label>Password:</label> */}
               <input
                 type='password'
                 name='password'
+                placeholder='Password'
                 value={password}
                 onChange={this.handleChange}
               />
             </div>
-            <div>
-              <label>Bio:</label>
-              <br />
-              <input type='text' name='bio' value={bio} onChange={this.handleChange} />
+            <div className='input-container'>
+              {/* <label>Bio:</label> */}
+              <input
+                type='text'
+                name='bio'
+                placeholder='Tell us something about yourself'
+                value={bio}
+                onChange={this.handleChange}
+              />
             </div>{" "}
             <button className='signup-btn btn btn-positive'>
               <input className='login-btn' type='submit' value='Signup' />
             </button>
           </form>
           <div className='already-section'>
-            <p className='already'>Already have account?</p>
             <p>
+              Already have an account?
               <Link to={"/login"}> Login</Link>
             </p>
           </div>

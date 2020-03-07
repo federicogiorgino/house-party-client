@@ -21,16 +21,32 @@ class PartyCard extends Component {
   };
 
   render() {
-    const { _id, title, guestLimit, city, date } = this.props;
+    const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
-      <div className='container'>
-        <h5>{title}</h5>
-        <p>{guestLimit}</p>
-        <p>{city}</p>
-        <p>{this.formatDate(date)}</p>
-        {/* link to the party specific */}
-        <Link to={`/parties/${_id}`}>link</Link>
-      </div>
+      <Link className='party-card' to={`/parties/${_id}`}>
+        <div className='party-container'>
+          <div className='img-container'>
+            <img src={image} alt='' />
+          </div>
+          <div className='info-container'>
+            <h5>{title}</h5>
+            <p>Guests: {guestLimit}</p>
+            <p>
+              {city} {this.formatDate(date)}
+            </p>
+            <p>
+              Hosted by{" "}
+              <div className='chip'>
+                <img
+                  src='https://fanatical.imgix.net/product/original/02a4f984-1c89-4046-93f1-a3994bb9faf9.jpeg?auto=compress,format&w=400&fit=max'
+                  alt=''
+                />
+                {host}
+              </div>
+            </p>
+          </div>
+        </div>
+      </Link>
     );
   }
 }

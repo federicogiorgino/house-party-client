@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import partyService from "../lib/parties-service";
+import cloudinaryService from "../lib/cloudinary-service";
+
 import BottomNavbar from "../components/BottomNavbar";
 
 class CreateParty extends Component {
@@ -8,8 +10,10 @@ class CreateParty extends Component {
     description: "",
     guestLimit: "",
     city: "Rome",
+    image: "",
     address: "",
-    date: ""
+    date: "",
+    imageReady: true
   };
 
   changeHandler = e => {
@@ -20,9 +24,9 @@ class CreateParty extends Component {
   submitHandler = e => {
     e.preventDefault();
 
-    const { title, description, guestLimit, city, address, date } = this.state;
+    const { title, description, guestLimit, city, address, date, image } = this.state;
 
-    const newParty = { title, description, guestLimit, city, address, date };
+    const newParty = { title, description, guestLimit, city, address, date, image };
     partyService
       .create(newParty)
       .then(party => {
@@ -33,13 +37,25 @@ class CreateParty extends Component {
       });
   };
 
+  imageHandler = event => {
+    this.setState({ imageReady: false });
+
+    const file = event.target.files[0];
+    const imageFile = new FormData();
+
+    imageFile.append("image", file);
+
+    cloudinaryService.imageUpload(imageFile).then(imageUrl => {
+      this.setState({ image: imageUrl, imageReady: true });
+    });
+  };
+
   render() {
     const { title, description, guestLimit, city, address, date } = this.state;
     return (
       <div className='create-form-container'>
         <div className='create-form'>
           <form onSubmit={this.submitHandler}>
-            
             {/* title field */}
             <div>
               <label>Party Name:</label>
@@ -87,8 +103,8 @@ class CreateParty extends Component {
                   <select name='city' value={city} onChange={this.handleChange}>
                     <option value='Rome'>Rome</option>
                     <option value='Barcelona'>Barcelona</option>
-                    <option value='Zurich'>Zurich</option>
-                    <option value='Amsterdam'>Amsterdam</option>
+                    <option value='San Francisco'>San Francisco</option>
+                    <option value='London'>London</option>
                     <option value='Paris'>Paris</option>
                     <option value='Berlin'>Berlin</option>
                     <option value='New York City'>New York City</option>
@@ -112,6 +128,17 @@ class CreateParty extends Component {
                   />
                 </div>
               </div>
+              <div>
+                <label>Image:</label>
+                <div>
+                  <input
+                    placeholder='Upload an Image'
+                    type='file'
+                    name='image'
+                    onChange={this.imageHandler}
+                  />
+                </div>
+              </div>
 
               <div>
                 <label>Date:</label>
@@ -127,7 +154,11 @@ class CreateParty extends Component {
               </div>
 
               <div className='button-container'>
-                <button type='submit' className='btn btn-positive  '>
+                <button
+                  type='submit'
+                  disabled={!this.state.imageReady}
+                  className='btn btn-positive  '
+                >
                   Create Party
                 </button>
               </div>

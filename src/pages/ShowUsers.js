@@ -52,32 +52,34 @@ class ShowUsers extends Component {
   }
 
   render() {
-    const { firstName, lastName, username, email, bio, attending, _id } = this.state.user;
+    const { firstName, lastName, username, email, bio, _id } = this.state.user;
 
     return (
-      <div>
-        <div className='container'>
-          <div>
-            <h3>Welcome {username}</h3>
-            <h3>Name: {firstName}</h3>
-            <h3>Last Name:{lastName}</h3>
-            <h3>E-Mail: {email}</h3>
-            <h3>Bio: {bio}</h3>
-
-            <ul>
-              {this.props.user.organizing.map((el, index) => (
-                <li key={index}>
-                  {index}
-                  {el}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <Link to={`/user/edit/${_id}`}>
-              <button className='button is-info'>Edit profile</button>
-            </Link>
-          </div>
+      <div className='user-profile'>
+        <div>
+          <img
+            src='https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif'
+            alt='Placeholder'
+          />
+        </div>
+        <div>
+          <h2 className='h2-bold'>
+            {firstName} {lastName}
+          </h2>
+        </div>
+        <div>
+          <p>
+            <span>Username:</span>
+            {username}
+          </p>
+          <p>
+            <span>E-Mail:</span>
+            {email}
+          </p>
+          <p>
+            <span>Info:</span>
+            {bio}
+          </p>
         </div>
         <BottomNavbar />
       </div>

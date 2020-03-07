@@ -1,7 +1,7 @@
 import React from "react";
 
 function UserCard(props) {
-  const { firstName, lastName, username, email, bio } = props;
+  const { firstName, lastName, username, email, bio, attending, organizing } = props;
   return (
     <div className='container'>
       <div>

@@ -27,31 +27,33 @@ class Login extends Component {
         <div className='login-form'>
           <form onSubmit={this.handleFormSubmit}>
             <div>
-              <label>Username </label>
-              <br />
-              <input type='text' name='username' value={username} onChange={this.handleChange} />
+              <input
+                type='text'
+                name='username'
+                placeholder='Username'
+                value={username}
+                onChange={this.handleChange}
+              />
             </div>
             <div>
-              <label>Password</label>
-              <br />
               <input
                 type='password'
                 name='password'
+                placeholder='Password'
                 value={password}
                 onChange={this.handleChange}
               />
             </div>
-            <br />
             <div>
               <button className='btn btn-positive'>
                 <input className='login-btn' type='submit' value='Login' />
               </button>
             </div>
           </form>
+          <br />
           <div className='already-section'>
-            <p className='already'>Don't have an account?</p>
             <p>
-              <Link to={"/signup"}> Signup</Link>
+              Don't have an account? <Link to={"/signup"}> Signup</Link>
             </p>
           </div>
         </div>

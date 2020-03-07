@@ -5,7 +5,7 @@ import BottomNavbar from "../components/BottomNavbar";
 class Private extends Component {
   render() {
     return (
-      <div className='private-container'>
+      <div className=' text-center splash'>
         <div className='cities'>
           <div>
             <h3>Search in these cities</h3>

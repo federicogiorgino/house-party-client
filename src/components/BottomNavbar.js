@@ -6,15 +6,16 @@ class BottomNav extends Component {
   render() {
     const { user } = this.props;
     return (
-      <nav className=''>
+      <nav className='bottom-navbar'>
         <NavLink to='/parties'>
-          <i className='fa fa-calendar'></i>
+          <i className='material-icons'>view_headline</i>
         </NavLink>
-        <NavLink to='/create'>
-          <i className='fa fa-plus-square'></i>
+
+        <NavLink to='/parties/create'>
+          <i className='material-icons'>add</i>
         </NavLink>
         <NavLink to={`/user/${user._id}`} exact>
-          <i className='fa fa-user'></i>
+          <i className='material-icons'>account_box</i>
         </NavLink>
       </nav>
     );

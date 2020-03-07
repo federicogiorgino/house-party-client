@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { withAuth } from "./../lib/Auth";
 
 class Navbar extends Component {
@@ -7,21 +7,11 @@ class Navbar extends Component {
     const { logout, isLoggedIn } = this.props;
 
     return (
-      <nav>
-        <div>
-          <Link to={"/"} id='home-btn'>
-            <i className='fa fa-home'></i>
-          </Link>
-          {isLoggedIn ? (
-            <i onClick={logout} className='fa fa-sign-out'></i>
-          ) : (
-            <>
-              <div>
-                <h3>HOUSE PARTY</h3>
-              </div>
-            </>
-          )}
-        </div>
+      <nav className='nav'>
+        <NavLink to={"/"}>
+          <i className='fa fa-home'></i>
+        </NavLink>
+        {isLoggedIn ? <i onClick={logout} className='fa fa-sign-out'></i> : null}
       </nav>
     );
   }
