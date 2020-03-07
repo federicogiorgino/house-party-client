@@ -3,7 +3,7 @@ import React from "react";
 function UserCard(props) {
   const { firstName, lastName, username, email, bio, attending, organizing } = props;
   return (
-    <div className='container'>
+    <div>
       <div>
         <img
           src='https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif'
@@ -12,7 +12,7 @@ function UserCard(props) {
       </div>
 
       <div>
-        <p className='p-bold'>
+        <p>
           {firstName} {lastName}
         </p>
       </div>

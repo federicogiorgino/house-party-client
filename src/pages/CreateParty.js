@@ -53,11 +53,12 @@ class CreateParty extends Component {
   render() {
     const { title, description, guestLimit, city, address, date } = this.state;
     return (
-      <div className='create-form-container'>
+      <div className='form-container'>
         <div className='create-form'>
           <form onSubmit={this.submitHandler}>
+            <h3>Create a new Party</h3>
             {/* title field */}
-            <div>
+            <div className='input-form'>
               <label>Party Name:</label>
               <div>
                 <input
@@ -70,7 +71,7 @@ class CreateParty extends Component {
               </div>
             </div>
 
-            <div>
+            <div className='input-form'>
               <label>Description:</label>
               <div>
                 <input
@@ -83,7 +84,7 @@ class CreateParty extends Component {
               </div>
             </div>
 
-            <div>
+            <div className='input-form'>
               <label>Guest Limit</label>
               <div>
                 <input
@@ -96,9 +97,9 @@ class CreateParty extends Component {
               </div>
             </div>
 
-            <div>
-              <label>City:</label>
-              <div>
+            <div className='input-form'>
+              <div className='city-picker'>
+                <label>City: </label>
                 <div>
                   <select name='city' value={city} onChange={this.handleChange}>
                     <option value='Rome'>Rome</option>
@@ -109,14 +110,14 @@ class CreateParty extends Component {
                     <option value='Berlin'>Berlin</option>
                     <option value='New York City'>New York City</option>
                     <option value='Moscow'>Moscow</option>
-                    <option value='Miami'>Miami</option>
+                    <option value='Sao Paulo'>Sao Paulo</option>
                   </select>
                 </div>
               </div>
 
               {/* address field */}
 
-              <div>
+              <div className='input-form'>
                 <label>Adress:</label>
                 <div>
                   <input
@@ -128,9 +129,10 @@ class CreateParty extends Component {
                   />
                 </div>
               </div>
-              <div>
-                <label>Image:</label>
-                <div>
+
+              <div className='input-form'>
+                <div className='img-picker'>
+                  <label>Image:</label>
                   <input
                     placeholder='Upload an Image'
                     type='file'
@@ -140,10 +142,11 @@ class CreateParty extends Component {
                 </div>
               </div>
 
-              <div>
+              <div className='input-form'>
                 <label>Date:</label>
                 <div>
                   <input
+                    className='date-picker'
                     placeholder='When is the party??'
                     type='date'
                     name='date'
@@ -152,14 +155,11 @@ class CreateParty extends Component {
                   />
                 </div>
               </div>
+              <br />
 
-              <div className='button-container'>
-                <button
-                  type='submit'
-                  disabled={!this.state.imageReady}
-                  className='btn btn-positive  '
-                >
-                  Create Party
+              <div className='btn-container'>
+                <button className='btn-round' type='submit' disabled={!this.state.imageReady}>
+                  <i className='material-icons'>add</i>
                 </button>
               </div>
             </div>

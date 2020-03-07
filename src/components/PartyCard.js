@@ -23,30 +23,41 @@ class PartyCard extends Component {
   render() {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
-      <Link className='party-card' to={`/parties/${_id}`}>
-        <div className='party-container'>
-          <div className='img-container'>
-            <img src={image} alt='' />
-          </div>
-          <div className='info-container'>
-            <h5>{title}</h5>
-            <p>Guests: {guestLimit}</p>
-            <p>
-              {city} {this.formatDate(date)}
-            </p>
-            <p>
-              Hosted by{" "}
-              <div className='chip'>
-                <img
-                  src='https://fanatical.imgix.net/product/original/02a4f984-1c89-4046-93f1-a3994bb9faf9.jpeg?auto=compress,format&w=400&fit=max'
-                  alt=''
-                />
-                {host}
+      <div>
+        <div class='container'>
+          <div class='row'>
+            <div class='col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 party-card'>
+              <div class='card'>
+                <div class='image'>
+                  <img src={image} width='100%' />
+                </div>
+
+                <div class='text'>
+                  <div class='fab'>
+                    {" "}
+                    <Link to={`/parties/${_id}`}>&#43; </Link>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>0/{guestLimit} guests</p>
+                  <p>
+                    {city} - {this.formatDate(date)}
+                  </p>
+                  <div className='chip-container'>
+                    <p>Host</p>
+                    <div class='chip'>
+                      <img src='https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg' />
+                      <span class='chip-name'>{host}</span>
+                      <span class='chip-button-close' role='button'>
+                        {" "}
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </p>
+            </div>
           </div>
         </div>
-      </Link>
+      </div>
     );
   }
 }

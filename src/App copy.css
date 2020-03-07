@@ -1,242 +1,191 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap");
-*,
+
 html,
 body {
   font-family: "Rubik";
   margin: 0;
   padding: 0;
-  background-color: #fe5f55;
 }
 
-.app {
-  height: 100vh;
+.material-icons {
+  color: white;
+  font-size: 24px;
 }
 
 .btn-positive {
-  background-color: #fe5f55 !important;
+  background-color: #424874 !important;
   color: whitesmoke !important;
+  margin: 10px;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 2px;
-  background-color: whitesmoke;
-  width: 90%;
-  height: 80%;
-  max-height: 80%;
-  min-height: 90vh;
-  padding: 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-/* LOGIN */
-
-.login-container {
-  margin: 50px 20px;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 70%;
-  text-align: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-/* LOGIN */
-
-.signup-container {
-  margin: 10px 20px;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80%;
-  text-align: center;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-.signup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.already {
-  margin-top: 10px;
-}
-
-.already-section {
-  display: flex;
-  align-items: flex-end;
-}
-
-.already-section p {
-  margin-right: 10px;
-}
-
-.signup-btn {
-  margin-top: 10px;
-}
-
-.create-form-container {
+.App {
+  height: 100vh;
   width: 100vw;
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: -20px;
-}
-.create-form {
-  border-radius: 2px;
-  background-color: whitesmoke;
-  width: 90%;
-  height: 80%;
-  max-height: 80%;
-  padding: 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.create-form input,
-.create-form select {
-  width: 95%;
-  background-color: white;
-  border: none;
-  height: 2rem;
-  padding-left: 3px;
-}
-
-.create-form label {
-  margin-top: 5px;
-}
-
-.button-container {
-  margin-top: 10px;
 }
 
 /* NAVBAR */
-.navbar {
-  display: flex;
-  justify-content: space-evenly;
+
+.nav {
+  background-color: #0f4c81;
+  display: block;
   align-items: center;
-  background: #fe5f55;
+  justify-content: space-around;
 }
 
-.navbar h3 {
-  padding-top: 5px;
+.nav .fa {
+  width: 30px;
+  height: 35px;
   color: whitesmoke;
-}
-
-.navbar a,
-.navbar a:visited {
-  color: white;
-  text-decoration: none;
-}
-
-.navbar i {
-  color: white;
   font-size: 2rem;
 }
 
-.nav-buttons {
-  display: flex;
-}
-/* BOTTOM NAV */
 .bottom-navbar {
-  padding: 10px 30px;
+  background-color: #0f4c81;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fe5f55;
+  justify-content: space-around;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
+  color: white;
+  height: 3.5rem;
+  text-align: center;
+}
+.bottom-navbar .fa {
+  color: whitesmoke;
+  font-size: 2rem;
 }
 
-.bottom-navbar .fa {
+/* SPLASH */
+
+.splash h3 {
+  margin-top: 20%;
+  font-weight: 700;
   font-size: 2rem;
-  color: whitesmoke;
+}
+
+.img-grid img {
+  width: 60px;
 }
 
 .img-grid {
-  padding: 5px;
+  background-color: whitesmoke;
+  margin: 15px;
+  margin-top: 10%;
+  padding: 15px;
   text-align: center;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(30px, auto);
-}
-
-.img-grid img {
-  width: 3rem;
-}
-
-.private {
-  background-color: rosybrown;
-}
-
-.cities {
-  text-align: center;
-  padding: 10px;
-  background-color: whitesmoke;
-  max-height: 80%;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.private-container {
-  border-radius: 2px;
-  height: 85%;
-  min-height: 0vh;
-  padding: 10px;
-  padding-top: 70px;
-}
+/* USER PROFILE */
 
-.text {
-  padding-bottom: 20px;
-}
-
-.login-btn {
-  color: whitesmoke;
-}
-
-.home {
-  padding-top: 15%;
-  background-color: #fe5f55;
-  height: 85%;
+.user-profile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  padding: 100px;
+}
+.user-profile img {
+  margin-bottom: 2rem;
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
 
-.home h1 {
-  margin-bottom: 30px;
+.h2-bold {
+  padding-bottom: 3rem;
 }
 
-.parties-title {
-  text-align: center;
+.user-profile span {
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 700;
 }
+
+.user-profile p {
+  font-size: 1.5rem;
+}
+
+/* PARTY */
 
 .party-page {
-  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.party-card {
+  width: 100%;
+  color: black;
+  text-decoration: none;
 }
 .party-container {
-  padding: 5px;
   display: flex;
+  border-radius: 10px;
   align-items: center;
   background-color: whitesmoke;
+  margin: 5px;
+  margin-bottom: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  max-height: 20vh;
-  margin: 10px;
-  width: 95%;
 }
 
-.text-description-container {
-  padding: 10px;
+.img-container {
+  margin: 12px;
+  width: 130px;
+  height: 130px;
+}
+
+.img-container img {
+  width: 130px;
+  height: 130px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.info-container {
+  margin: 12px;
+}
+
+/* LOGIN */
+
+.login-container {
+  padding-top: 140px;
+  margin: 20px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: whitesmoke;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+.signup-container {
+  padding-top: 40px;
+  margin: 20px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: whitesmoke;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.input-container {
+  height: 60px;
   margin: 10px;
+}
+
+.signup-form {
+  width: 70%;
+}
+
+input::placeholder {
+  color: black;
+  font-weight: 700;
+  font-size: 1rem;
 }

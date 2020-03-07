@@ -89,15 +89,11 @@ class ShowParties extends Component {
       d = dd + "/" + mm + "/" + yyyy;
       return d;
     };
-    const { host, title, description, guestLimit, city, address, date } = this.state.party;
+    const { host, title, description, guestLimit, city, address, date, image } = this.state.party;
     return (
       <div>
-        <div className='container'>
-          <img
-            src='https://images.pexels.com/photos/1449795/pexels-photo-1449795.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-            alt=''
-            height='40%'
-          />
+        <div>
+          <img src={image} alt='' height='40%' />
           <p>Party Name{title}</p>
           <p>Description{description}</p>
           <p>Maximum Guests: {guestLimit}</p>

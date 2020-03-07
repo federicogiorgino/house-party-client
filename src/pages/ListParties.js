@@ -17,8 +17,7 @@ class ListParties extends Component {
 
   render() {
     return (
-      <div className='party-page'>
-        <h3>All Parties</h3>
+      <div>
         {this.state.partiesList.map((oneParty, index) => {
           return <PartyCard key={index} {...oneParty} />;
         })}

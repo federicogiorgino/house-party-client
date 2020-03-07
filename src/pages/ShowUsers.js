@@ -52,34 +52,46 @@ class ShowUsers extends Component {
   }
 
   render() {
-    const { firstName, lastName, username, email, bio, _id } = this.state.user;
+    const { firstName, lastName, username, email, bio, image, phone, _id } = this.state.user;
 
     return (
-      <div className='user-profile'>
-        <div>
-          <img
-            src='https://medgoldresources.com/wp-content/uploads/2018/02/avatar-placeholder.gif'
-            alt='Placeholder'
-          />
+      <div className='profile-page'>
+        <div className='img-container'>
+          <img src={image} alt='Placeholder' />
         </div>
-        <div>
-          <h2 className='h2-bold'>
-            {firstName} {lastName}
-          </h2>
-        </div>
-        <div>
-          <p>
-            <span>Username:</span>
-            {username}
-          </p>
-          <p>
-            <span>E-Mail:</span>
-            {email}
-          </p>
-          <p>
-            <span>Info:</span>
-            {bio}
-          </p>
+        <div className='profile-details'>
+          <div>
+            <h2>
+              {firstName} {lastName}
+            </h2>
+          </div>
+          <div>
+            <p>
+              <span className='info-label'>Username: </span>
+              {username}
+            </p>
+            <p>
+              <span className='info-label'>Phone Number: </span>
+              {phone}
+            </p>
+            <p>
+              <span className='info-label'>E-Mail: </span>
+              {email}
+            </p>
+            <span className='info-label'>Bio</span>
+            <p>{bio}</p>
+
+            {// if user is on his profile, display 'Edit' button
+            this.state.currentUser ? (
+              <div>
+                <Link to={`/user/edit/${_id}`}>
+                  <button className='btn-round'>
+                    <i className='material-icons'>edit</i>
+                  </button>
+                </Link>
+              </div>
+            ) : null}
+          </div>
         </div>
         <BottomNavbar />
       </div>

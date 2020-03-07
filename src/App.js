@@ -21,7 +21,7 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Navbar />
+        {/* <Navbar /> */}
         <Switch>
           {/* anon routes */}
           <AnonRoute exact path='/' component={Home} />

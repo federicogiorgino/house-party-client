@@ -5,47 +5,47 @@ import BottomNavbar from "../components/BottomNavbar";
 class Private extends Component {
   render() {
     return (
-      <div className=' text-center splash'>
-        <div className='cities'>
+      <div>
+        <div className='filter-page'>
           <div>
             <h3>Search in these cities</h3>
           </div>
-          <div className='img-grid'>
-            <div>
-              <img src={require("../img/amsterdam.svg")} alt='' />
-              <p>Amsterdam</p>
+          <div className='filter-grid '>
+            <div className='img-filter'>
+              <img src={require("../img/icons/013-golden gate.svg")} alt='' />
+              <p className='img-filter-label'>San Francisco</p>
             </div>
-            <div>
-              <img src={require("../img/barcelona.svg")} alt='' />
-              <p>Barcelona</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/003-sagrada familia.svg")} alt='' />
+              <p className='img-filter-label'>Barcelona</p>
             </div>
-            <div>
-              <img src={require("../img/germany.svg")} alt='' />
-              <p>Berlin</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/004-brandenburg gate.svg")} alt='' />
+              <p className='img-filter-label'>Berlin</p>
             </div>
-            <div>
-              <img src={require("../img/rome.svg")} alt='' />
-              <p>Rome</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/034-Colosseum.svg")} alt='' />
+              <p className='img-filter-label'>Rome</p>
             </div>
-            <div>
-              <img src={require("../img/russia.svg")} alt='' />
-              <p>Moscow</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/006-grand mosque.svg")} alt='' />
+              <p className='img-filter-label'>Moscow</p>
             </div>
-            <div>
-              <img src={require("../img/zurich.svg")} alt='' />
-              <p>Zurich</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/005-christ the redeemer.svg")} alt='' />
+              <p className='img-filter-label'>Sao Paulo</p>
             </div>
-            <div>
-              <img src={require("../img/paris.svg")} alt='' />
-              <p>Paris</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/010-eiffel tower.svg")} alt='' />
+              <p className='img-filter-label'>Paris</p>
             </div>
-            <div>
-              <img src={require("../img/beach.svg")} alt='' />
-              <p>Miami</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/003-big ben.svg")} alt='' />
+              <p className='img-filter-label'>London</p>
             </div>
-            <div>
-              <img src={require("../img/architecture-and-city.png")} alt='' />
-              <p>New York City</p>
+            <div className='img-filter'>
+              <img src={require("../img/icons/029-statue of liberty.svg")} alt='' />
+              <p className='img-filter-label'>New York City</p>
             </div>
           </div>
         </div>

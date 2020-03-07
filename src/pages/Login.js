@@ -22,7 +22,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className='login-container'>
+      <div>
         <h1>Login</h1>
         <div className='login-form'>
           <form onSubmit={this.handleFormSubmit}>

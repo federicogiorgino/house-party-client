@@ -20,11 +20,11 @@ class Signup extends Component {
   render() {
     const { firstName, lastName, username, password, email, bio } = this.state;
     return (
-      <div className='signup-container'>
+      <div>
         <h1>Sign Up</h1>
-        <div className='signup-form'>
+        <div>
           <form onSubmit={this.handleFormSubmit}>
-            <div className='input-container'>
+            <div>
               {/* <label>First Name:</label> */}
               <input
                 type='text'
@@ -34,7 +34,7 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='input-container'>
+            <div>
               {/* <label>Last Name:</label> */}
               <input
                 type='text'
@@ -44,7 +44,7 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='input-container'>
+            <div>
               {/* <label>E-Mail:</label> */}
               <input
                 type='email'
@@ -54,7 +54,7 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='input-container'>
+            <div>
               {/* <label>Username:</label> */}
               <input
                 type='text'
@@ -64,7 +64,7 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='input-container'>
+            <div>
               {/* <label>Password:</label> */}
               <input
                 type='password'
@@ -74,7 +74,7 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className='input-container'>
+            <div>
               {/* <label>Bio:</label> */}
               <input
                 type='text'
@@ -84,11 +84,11 @@ class Signup extends Component {
                 onChange={this.handleChange}
               />
             </div>{" "}
-            <button className='signup-btn btn btn-positive'>
+            <button>
               <input className='login-btn' type='submit' value='Signup' />
             </button>
           </form>
-          <div className='already-section'>
+          <div>
             <p>
               Already have an account?
               <Link to={"/login"}> Login</Link>

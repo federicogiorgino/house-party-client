@@ -7,7 +7,7 @@ class Navbar extends Component {
     const { logout, isLoggedIn } = this.props;
 
     return (
-      <nav className='nav'>
+      <nav>
         <NavLink to={"/"}>
           <i className='fa fa-home'></i>
         </NavLink>
