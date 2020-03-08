@@ -136,6 +136,10 @@ body {
   transition: box-shadow 0.2s;
 }
 
+.pure-red {
+  background-color: tomato !important;
+}
+
 .pure-material-button-contained::-moz-focus-inner {
   border: none;
 }
@@ -219,6 +223,9 @@ body {
 
 /* MISC */
 
+.pt-10 {
+  margin-top: 10px;
+}
 .bg {
   background-color: #263238;
   margin: 0;
@@ -276,7 +283,6 @@ body {
 /* NAVBAR */
 .bot-navigation {
   box-shadow: 1px 1px 1px 1px whitesmoke;
-
   position: fixed;
   left: 0;
   bottom: 0;
@@ -299,12 +305,11 @@ body {
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   margin: 20px;
-  height: 90vh;
   padding: 5%;
 }
 .img-container img {
   border-radius: 50%;
-  width: 60%;
+  width: 40%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
@@ -314,6 +319,21 @@ body {
   margin-top: 5%;
   padding: 5%;
 }
+
+.profile-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  width: 100vw;
+  /* background-color: white; */
+}
+
+.party-profile-block {
+  background-color: #263238;
+  margin-right: 40px;
+}
+
 /* PROFILE */
 
 /* FORM CONTAINER */
@@ -380,7 +400,7 @@ select,
 /* PARTY CARD */
 
 .party-card {
-  background-color: #263238;
+  /* background-color: #263238; */
 }
 .card {
   display: inline-block;
@@ -496,10 +516,11 @@ select,
   display: flex;
   flex-direction: column;
   text-align: left;
-  margin: 10px;
+  margin: 30px;
   padding: 3%;
   min-height: 100vh;
   background-color: #eceff1;
+  margin-bottom: 60px;
 
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
 }
@@ -509,12 +530,23 @@ select,
   height: 60%;
 }
 
+.event-container label {
+  font-weight: 700;
+}
+
 .img-box {
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15);
   width: 100%;
   height: 60%;
 }
 
+.event-info {
+  padding: 10px;
+}
+
+.event-info-specific {
+  display: flex;
+}
 /* EVENT CONTAINER */
 
 /* AUTH FORM */
@@ -533,3 +565,9 @@ select,
 }
 
 /* AUTH FORM */
+
+/* LIST CONTAINER */
+.list-container {
+  margin-bottom: 50px;
+}
+/* LIST CONTAINER */

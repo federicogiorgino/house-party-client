@@ -41,11 +41,10 @@ class PartyCard extends Component {
 
                 <div className='text'>
                   <div className='fab'>
-                    {" "}
                     <Link to={`/parties/${_id}`}>&#43; </Link>
                   </div>
                   <h3>{title}</h3>
-                  <p>0/{guestLimit} guests</p>
+                  <p>Max Guests {guestLimit}</p>
                   <p>
                     {city} - {this.formatDate(date)}
                   </p>
@@ -55,7 +54,6 @@ class PartyCard extends Component {
                       <img src='https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg' />
                       <span className='chip-name'>{host}</span>
                       <span className='chip-button-close' role='button'>
-                        {" "}
                       </span>
                     </div>
                   </div>

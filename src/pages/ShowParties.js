@@ -14,25 +14,23 @@ class ShowParties extends Component {
     this.state = {
       party: {},
       //will set the switch between Join and leave party
-      partyJoined: false
+      partyJoined: false,
+      guests: []
     };
   }
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log("worrrrrks");
 
     const { user } = this.props;
 
     userService
       .getOne(user._id)
       .then(currentUser => {
-        console.log("currentUser", currentUser);
-
         currentUser.attending.forEach(attendingParty => {
           //checks if the attending party id is equal to the id coming from this.props.match.params.id;
-          console.log("attendingParty", attendingParty);
           if (attendingParty._id === id) {
+            // if it is sets the partyJoined state to true
             this.setState({ partyJoined: true });
           }
         });
@@ -44,20 +42,21 @@ class ShowParties extends Component {
     partiesService
       .getOne(id)
       .then(party => {
-        this.setState({ party }, () => {
-          console.log("party", this.state);
-        });
+        const guests = party.guests;
+        this.setState({ party, guests });
       })
       .catch(error => console.log(error));
   }
 
   join = () => {
+    //userId from the props
     const id = this.props.user._id;
     const partyId = this.props.match.params.id;
 
     userService
       .attendParty(id, partyId)
       .then(() => {
+        // sets the state of partyJoined to true
         this.setState({ partyJoined: true });
       })
       .catch(err => console.log(err));
@@ -70,6 +69,7 @@ class ShowParties extends Component {
     userService
       .abandonParty(id, partyId)
       .then(() => {
+        // sets the state of partyJoined to false
         this.setState({ partyJoined: false });
       })
       .catch(err => console.log(err));
@@ -111,22 +111,58 @@ class ShowParties extends Component {
           </div>
 
           <div className='event-info'>
-            <p>Party Name: {title}</p>
-            <p>Description: {description}</p>
-            <p>Maximum Guests: {guestLimit}</p>
-            <p>Where: {city}</p>
-            <p>{address}</p>
-            <p>When:{formatDate(date)}</p>
-            <Link to={`/user/${host}`}>{host}</Link>
+            <div className='event-info-specific'>
+              <label>Party Name: </label>
+              <p> {title}</p>
+            </div>
+
+            <div className='event-info-specific'>
+              <label>Description: </label>
+              <p> {description}</p>
+            </div>
+
+            <div className='event-info-specific'>
+              <label>Guests: </label>
+              <p>
+                {this.state.guests.length}/{guestLimit}
+              </p>
+            </div>
+
+            <div className='event-info-specific'>
+              <label>Where: </label>
+              <p>
+                {city}, {address}
+              </p>
+            </div>
+
+            <div className='event-info-specific'>
+              <label>When: </label>
+              <p>{formatDate(date)}</p>
+            </div>
+
+            <div className='chip-container'>
+              <div className='chip'>
+                <span className='chip-name'>
+                  <Link to={`/user/${host}`}>Host: {host}</Link>
+                </span>
+                <span className='chip-button-close' role='button'></span>
+              </div>
+            </div>
           </div>
 
           <div className='map'>
-            <iframe frameBorder='0' style={{ width: "100%", height: "400px" }} src={url}></iframe>
+            <iframe
+              title='myMap'
+              frameBorder='0'
+              style={{ width: "100%", height: "300px" }}
+              src={url}
+            ></iframe>
           </div>
 
           {this.state.partyJoined ? (
             <div>
               <button
+                className='pure-red pure-material-button-contained'
                 onClick={() => {
                   this.leave();
                 }}
@@ -137,6 +173,7 @@ class ShowParties extends Component {
           ) : (
             <div>
               <button
+                className='pure-material-button-contained'
                 onClick={() => {
                   this.join();
                 }}
