@@ -108,50 +108,58 @@ class ShowParties extends Component {
     return (
       <div className='mui-container'>
         <div className='mui-panel'>
-          <div className='img-box'>
-            {image ? (
-              <img src={image} alt='' height='40%' />
-            ) : (
-              <img
-                src='https://www.americanexpress.lk/images/placeholder-600x600.jpg'
-                alt=''
-                height='40%'
-              />
-            )}
-          </div>
           <div className='event-info'>
-            <div className='event-info-specific'>
-              <p> Party Name: {title}</p>
-            </div>
-
-            <div className='event-info-specific'>
-              <p>Description: {description}</p>
+            <h1 style={{ fontWeight: "700" }}>{title}</h1>
+            <div className='img-box'>
+              {image ? (
+                <img src={image} alt='' height='40%' />
+              ) : (
+                <img
+                  src='https://www.americanexpress.lk/images/placeholder-600x600.jpg'
+                  alt=''
+                  height='40%'
+                />
+              )}
             </div>
 
             <div className='event-info-specific'>
               <p>
-                Guests: {this.state.guests.length}/{guestLimit}
+                <span>Description: </span>
+                {description}
               </p>
             </div>
 
             <div className='event-info-specific'>
               <p>
-                Where: {city}, {address}
+                <span>Guests: </span>
+                {this.state.guests.length}/{guestLimit}
               </p>
             </div>
 
             <div className='event-info-specific'>
-              <p>When: {formatDate(date)}</p>
+              <p>
+                <span>Where: </span>
+                {city}, {address}
+              </p>
+            </div>
+
+            <div className='event-info-specific'>
+              <p>
+                <span>When: </span>
+                When: {formatDate(date)}
+              </p>
             </div>
 
             {host ? (
-              <div className='chip-container'>
-                <p>Hosted By</p>
-                <span class='mdl-chip mdl-chip--contact'>
-                  <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
-                    <img class='mdl-chip__contact' src={host.image} alt=''></img>
+              <div
+                className='chip-container'
+                style={{ display: "flex", flexWrap: "nowrap", width: "100%" }}
+              >
+                <span className='mdl-chip mdl-chip--contact'>
+                  <span className='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                    <img className='mdl-chip__contact' src={host.image} alt=''></img>
                   </span>
-                  <span class='mdl-chip__text'>
+                  <span className='mdl-chip__text'>
                     <Link to={`/user/${host._id}`}>
                       {host.firstName} {host.lastName}
                     </Link>
@@ -199,7 +207,7 @@ class ShowParties extends Component {
                   this.leave();
                 }}
               >
-                Leave Party
+                Leave
               </button>
             </div>
           ) : (
@@ -211,7 +219,7 @@ class ShowParties extends Component {
                   this.join();
                 }}
               >
-                Join Party
+                Join
               </button>
             </div>
           )}

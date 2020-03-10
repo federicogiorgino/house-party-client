@@ -20,10 +20,10 @@ class Signup extends Component {
   render() {
     const { firstName, lastName, username, password, email, bio } = this.state;
     return (
-      <div className='mui-container p-10 oflow'>
+      <div className='mui-container p-15 oflow'>
         <div className='mui-panel '>
           <h1>Sign Up</h1>
-          <form onSubmit={this.handleFormSubmit} class='mui-form'>
+          <form onSubmit={this.handleFormSubmit} className='mui-form'>
             <div className='mui-textfield'>
               <input
                 type='text'

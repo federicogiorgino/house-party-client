@@ -22,7 +22,7 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className='mui-container p-20'>
+      <div className='mui-container p-40'>
         <div className='mui-panel '>
           <form onSubmit={this.handleFormSubmit}>
             <h1>Login</h1>

@@ -3,8 +3,6 @@ import partiesService from "../lib/parties-service";
 import PartyCard from "../components/PartyCard";
 import BottomNavbar from "../components/BottomNavbar";
 import { Link } from "react-router-dom";
-
-
 class ListParties extends Component {
   state = {
     partiesList: [],
@@ -30,9 +28,8 @@ class ListParties extends Component {
           <div className='mui-panello'>
             {this.state.partiesList
               .map((oneParty, index) => {
-                console.log("oneparty", oneParty);
                 return (
-                  <Link to={`/parties/${oneParty._id}`}>
+                  <Link key={index} to={`/parties/${oneParty._id}`}>
                     <PartyCard key={index} {...oneParty} />
                   </Link>
                 );

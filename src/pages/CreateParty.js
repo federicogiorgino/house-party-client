@@ -53,7 +53,7 @@ class CreateParty extends Component {
   render() {
     const { title, description, guestLimit, city, address, date } = this.state;
     return (
-      <div className='mui-container'>
+      <div className='mui-container p-15'>
         <div className='mui-panel'>
           <form onSubmit={this.submitHandler} className='mui-form'>
             <legend>Create a new Party</legend>
@@ -89,7 +89,7 @@ class CreateParty extends Component {
             </div>
 
             <div className='input-form'>
-              <div class='mui-select'>
+              <div className='mui-select'>
                 <select name='city' value={city} onChange={this.changeHandler}>
                   <option value='Rome'>Rome</option>
                   <option value='Barcelona'>Barcelona</option>

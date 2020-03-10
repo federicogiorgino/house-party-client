@@ -27,10 +27,8 @@ class FilteredParties extends Component {
             {this.state.filteredParties
 
               .map((oneParty, index) => {
-                console.log("oneParty", oneParty);
-
                 return (
-                  <Link to={`/parties/${oneParty._id}`}>
+                  <Link key={index} to={`/parties/${oneParty._id}`}>
                     <PartyCard key={index} {...oneParty} />{" "}
                   </Link>
                 );

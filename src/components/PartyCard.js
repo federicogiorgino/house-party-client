@@ -24,35 +24,36 @@ class PartyCard extends Component {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
       <div className='mui-container'>
-          <div class='demo-card-wide mdl-card mdl-shadow--2dp'>
-            <div
-              class='mdl-card__title'
-              style={{
-                background: `url( ${
-                  image ? image : "https://www.americanexpress.lk/images/placeholder-600x600.jpg"
-                } `
-              }}
-            ></div>
-            <div class='mdl-card__supporting-text'>
-              <h3>{title}</h3>
-              <p>
-                Max Guests {guestLimit} - {city} - {this.formatDate(date)}
-              </p>
-              {host.firstName ? (
-                <div className='chip-container'>
-                  <p>Hosted By</p>
-                  <span class='mdl-chip mdl-chip--contact'>
-                    <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
-                      <img class='mdl-chip__contact' src={host.image} alt=''></img>
-                    </span>
-                    <span class='mdl-chip__text'>
-                      {host.firstName} {host.lastName}
-                    </span>
+        <div className='demo-card-wide mdl-card mdl-shadow--2dp'>
+          <div
+            className='mdl-card__title'
+            style={{
+              background: `url( ${
+                image ? image : "https://www.americanexpress.lk/images/placeholder-600x600.jpg"
+              } `,
+              backgroundSize: "contain"
+            }}
+          ></div>
+          <div className='mdl-card__supporting-text'>
+            <h3>{title}</h3>
+            <p>
+              Max Guests {guestLimit} - {city} - {this.formatDate(date)}
+            </p>
+            {host ? (
+              <div className='chip-container'>
+                <p>Hosted By</p>
+                <span className='mdl-chip mdl-chip--contact'>
+                  <span className='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                    <img className='mdl-chip__contact' src={host.image} alt=''></img>
                   </span>
-                </div>
-              ) : null}
-            </div>
+                  <span className='mdl-chip__text'>
+                    {host.firstName} {host.lastName}
+                  </span>
+                </span>
+              </div>
+            ) : null}
           </div>
+        </div>
       </div>
     );
   }

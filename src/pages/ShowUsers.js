@@ -69,7 +69,7 @@ class ShowUsers extends Component {
 
     return (
       <div>
-        <div className='mui-container'>
+        <div className='mui-container p-10'>
           <div className='mui-panel text-center'>
             <div className='img-container'>
               {image ? (
@@ -81,25 +81,19 @@ class ShowUsers extends Component {
                 />
               )}
             </div>
-            <div className='profile-details'>
+            <div className='profile-details' style={{ textAlign: "left" }}>
               <div>
                 <h2>
                   {firstName} {lastName}
                 </h2>
               </div>
               <div>
-                <p>
-                  <span className='info-label'>Username: </span>
-                  {username}
-                </p>
-                <p>
-                  <span className='info-label'>Phone Number: </span>
-                  {phone}
-                </p>
-                <p>
-                  <span className='info-label'>E-Mail: </span>
-                  {email}
-                </p>
+                <span className='info-label'>Username: </span>
+                <p>{username}</p>
+                <span className='info-label'>Phone Number: </span>
+                <p>{phone}</p>
+                <span className='info-label'>E-Mail: </span>
+                <p>{email}</p>
                 <span className='info-label'>Bio</span>
                 <p>{bio}</p>
 
@@ -133,8 +127,12 @@ class ShowUsers extends Component {
             <h3 style={{ color: "white", marginTop: "20px", textAlign: "center" }}>
               Organizing Parties
             </h3>
-            {this.state.organizing.map((el, index) => {
-              return <PartyCard key={index} {...el} />;
+            {this.state.organizing.map((party, index) => {
+              return (
+                <Link key={index} to={`/parties/${party._id}`}>
+                  <PartyCard key={index} {...party} />
+                </Link>
+              );
             })}
           </ul>
         </div>

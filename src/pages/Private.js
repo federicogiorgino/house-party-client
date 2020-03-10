@@ -69,6 +69,7 @@ class Private extends Component {
             </div>
           </div>
         </div>
+
         <BottomNavbar />
       </div>
     );

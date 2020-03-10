@@ -27,25 +27,25 @@ class BottomNav extends Component {
       //   </i>
       // </nav>
 
-      <nav class='mobile-bottom-nav'>
-        <div class='mobile-bottom-nav__item mobile-bottom-nav__item--active'>
-          <div class='mobile-bottom-nav__item-content'>
+      <nav className='mobile-bottom-nav'>
+        <div className='mobile-bottom-nav__item mobile-bottom-nav__item--active'>
+          <div className='mobile-bottom-nav__item-content'>
             <NavLink to={"/"}>
               <i className='material-icons'>home</i>
             </NavLink>
             Home
           </div>
         </div>
-        <div class='mobile-bottom-nav__item'>
-          <div class='mobile-bottom-nav__item-content'>
+        <div className='mobile-bottom-nav__item'>
+          <div className='mobile-bottom-nav__item-content'>
             <NavLink to='/parties' exact>
               <i className='material-icons'>view_headline</i>
             </NavLink>
             All Events
           </div>
         </div>
-        <div class='mobile-bottom-nav__item'>
-          <div class='mobile-bottom-nav__item-content'>
+        <div className='mobile-bottom-nav__item'>
+          <div className='mobile-bottom-nav__item-content'>
             <NavLink to='/parties/create' exact>
               <i className='material-icons'>add</i>
             </NavLink>
@@ -53,16 +53,16 @@ class BottomNav extends Component {
           </div>
         </div>
 
-        <div class='mobile-bottom-nav__item'>
-          <div class='mobile-bottom-nav__item-content'>
+        <div className='mobile-bottom-nav__item'>
+          <div className='mobile-bottom-nav__item-content'>
             <NavLink to={`/user/${user._id}`} exact>
               <i className='material-icons'>account_box</i>
             </NavLink>
             Profile
           </div>
         </div>
-        <div class='mobile-bottom-nav__item'>
-          <div class='mobile-bottom-nav__item-content'>
+        <div className='mobile-bottom-nav__item'>
+          <div className='mobile-bottom-nav__item-content'>
             <i onClick={logout} className='material-icons'>
               exit_to_app
             </i>
