@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const apiURL = process.env.REACT_APP_API_URL;
 
 class User {
   constructor() {
     this.user = axios.create({
-      baseURL: `${baseUrl}/user`,
+      baseURL: `${apiURL}/user`,
       withCredentials: true
     });
   }
@@ -20,6 +20,10 @@ class User {
 
   updateOne(id, updatedUser) {
     return this.user.put(`/${id}`, updatedUser).then(({ data }) => data);
+  }
+
+  deleteOne(id) {
+    return this.user.delete(`/${id}`).then(({ data }) => data);
   }
 
   attendParty(id, partyId) {

@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const apiURL = process.env.REACT_APP_API_URL;
 
 class Auth {
   constructor() {
     this.auth = axios.create({
-      baseURL: baseUrl,
+      baseURL: apiURL,
       withCredentials: true
     });
   }

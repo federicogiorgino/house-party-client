@@ -4,23 +4,19 @@ import PartyCard from "../components/PartyCard";
 import BottomNavbar from "../components/BottomNavbar";
 import { Link } from "react-router-dom";
 
-
-class ListParties extends Component {
+class FilteredParties extends Component {
   state = {
-    partiesList: [],
+    filteredParties: [],
     user: {}
   };
 
   componentDidMount() {
-    partiesService
-      .getAll()
-      .then(allParties => this.setState({ partiesList: allParties }))
-      .catch(err => console.log(err));
+    const city = this.props.match.params.city;
 
-    // userService
-    //   .getOne()
-    //   .then(user => this.setState({ user: user }))
-    //   .catch(err => console.log(err));
+    partiesService
+      .getAllByCity(city)
+      .then(filteredParties => this.setState({ filteredParties }))
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -28,12 +24,14 @@ class ListParties extends Component {
       <div>
         <div className='mui-container'>
           <div className='mui-panello'>
-            {this.state.partiesList
+            {this.state.filteredParties
+
               .map((oneParty, index) => {
-                console.log("oneparty", oneParty);
+                console.log("oneParty", oneParty);
+
                 return (
                   <Link to={`/parties/${oneParty._id}`}>
-                    <PartyCard key={index} {...oneParty} />
+                    <PartyCard key={index} {...oneParty} />{" "}
                   </Link>
                 );
               })
@@ -45,4 +43,4 @@ class ListParties extends Component {
     );
   }
 }
-export default ListParties;
+export default FilteredParties;

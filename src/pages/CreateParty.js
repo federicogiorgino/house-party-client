@@ -16,13 +16,13 @@ class CreateParty extends Component {
     imageReady: true
   };
 
-  changeHandler = e => {
-    const { name, value } = e.target;
+  changeHandler = event => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
   };
 
-  submitHandler = e => {
-    e.preventDefault();
+  submitHandler = event => {
+    event.preventDefault();
 
     const { title, description, guestLimit, city, address, date, image } = this.state;
 
@@ -53,53 +53,43 @@ class CreateParty extends Component {
   render() {
     const { title, description, guestLimit, city, address, date } = this.state;
     return (
-      <div className='form-container'>
-        <div className='create-form'>
-          <form onSubmit={this.submitHandler}>
-            <h3>Create a new Party</h3>
-            {/* title field */}
-            <div className='input-form'>
-              <label>Party Name:</label>
-              <div>
-                <input
-                  placeholder="What's the party name?"
-                  type='text'
-                  name='title'
-                  value={title}
-                  onChange={this.changeHandler}
-                />
-              </div>
+      <div className='mui-container'>
+        <div className='mui-panel'>
+          <form onSubmit={this.submitHandler} className='mui-form'>
+            <legend>Create a new Party</legend>
+            <br />
+            <div className='mui-textfield'>
+              <input
+                placeholder="What's the party name?"
+                type='text'
+                name='title'
+                value={title}
+                onChange={this.changeHandler}
+              />
+            </div>
+
+            <div className='mui-textfield'>
+              <input
+                placeholder='Tell us more about the party'
+                type='text'
+                name='description'
+                value={description}
+                onChange={this.changeHandler}
+              />
+            </div>
+
+            <div className='mui-textfield'>
+              <input
+                placeholder="What's the maximum guest amount?"
+                type='number'
+                name='guestLimit'
+                value={guestLimit}
+                onChange={this.changeHandler}
+              />
             </div>
 
             <div className='input-form'>
-              <label>Description:</label>
-              <div>
-                <input
-                  placeholder='Tell us more about the party'
-                  type='text'
-                  name='description'
-                  value={description}
-                  onChange={this.changeHandler}
-                />
-              </div>
-            </div>
-
-            <div className='input-form'>
-              <label>Guest Limit</label>
-              <div>
-                <input
-                  placeholder="What's the maximum guest amount?"
-                  type='number'
-                  name='guestLimit'
-                  value={guestLimit}
-                  onChange={this.changeHandler}
-                />
-              </div>
-            </div>
-
-            <div className='input-form'>
-              <label>City: </label>
-              <div>
+              <div class='mui-select'>
                 <select name='city' value={city} onChange={this.changeHandler}>
                   <option value='Rome'>Rome</option>
                   <option value='Barcelona'>Barcelona</option>
@@ -109,57 +99,48 @@ class CreateParty extends Component {
                   <option value='Berlin'>Berlin</option>
                   <option value='New York City'>New York City</option>
                   <option value='Moscow'>Moscow</option>
-                  <option value='Sao Paulo'>Sao Paulo</option>
+                  <option value='Rio De Janeiro'>Rio De Janeiro</option>
                 </select>
+                <label>City </label>
+              </div>
+              <div className='mui-textfield'>
+                <input
+                  placeholder='Street, Number?'
+                  type='text'
+                  name='address'
+                  value={address}
+                  onChange={this.changeHandler}
+                />
+              </div>
+              <div className='mui-form--inline'>
+                <input
+                  className='upload'
+                  placeholder='Upload an Image'
+                  type='file'
+                  name='image'
+                  onChange={this.imageHandler}
+                />
               </div>
 
-              {/* address field */}
-
-              <div className='input-form'>
-                <label>Adress:</label>
-                <div>
-                  <input
-                    placeholder='Street, Number?'
-                    type='text'
-                    name='address'
-                    value={address}
-                    onChange={this.changeHandler}
-                  />
-                </div>
-              </div>
-
-              <div className='input-form'>
-                <div className='img-picker'>
-                  <label>Image:</label>
-                  <input
-                    placeholder='Upload an Image'
-                    type='file'
-                    name='image'
-                    onChange={this.imageHandler}
-                  />
-                </div>
-              </div>
-
-              <div className='input-form'>
+              <div className='mui-textfield'>
                 <label>Date:</label>
-                <div>
-                  <input
-                    className='date-picker'
-                    placeholder='When is the party??'
-                    type='date'
-                    name='date'
-                    value={date}
-                    onChange={this.changeHandler}
-                  />
-                </div>
+                <input
+                  className='date-picker'
+                  placeholder='When is the party??'
+                  type='date'
+                  name='date'
+                  value={date}
+                  onChange={this.changeHandler}
+                />
               </div>
-              <br />
 
-              <div className='btn-container'>
-                <button className='btn-round' type='submit' disabled={!this.state.imageReady}>
-                  <i className='material-icons'>add</i>
-                </button>
-              </div>
+              <button
+                className='mui-btn mui-btn--raised mui-btn--primary'
+                type='submit'
+                disabled={!this.state.imageReady}
+              >
+                Create
+              </button>
             </div>
           </form>
         </div>

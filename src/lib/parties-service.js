@@ -1,17 +1,21 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const apiURL = process.env.REACT_APP_API_URL;
 
 class Parties {
   constructor() {
     this.parties = axios.create({
-      baseURL: `${baseUrl}/parties`,
+      baseURL: `${apiURL}/parties`,
       withCredentials: true
     });
   }
 
   getAll() {
     return this.parties.get().then(({ data }) => data);
+  }
+
+  getAllByCity(city) {
+    return this.parties.get(`/search/${city}`).then(({ data }) => data);
   }
 
   getOne(id) {

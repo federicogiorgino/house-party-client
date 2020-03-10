@@ -58,76 +58,87 @@ class ShowUsers extends Component {
     }
   }
 
+  deleteUser = () => {
+    const id = this.props.user._id;
+    this.props.logout();
+    userService.deleteOne(id);
+  };
+
   render() {
     const { firstName, lastName, username, email, bio, image, phone, _id } = this.state.user;
 
     return (
-      <div className='profile-block'>
-        <div className='profile-page'>
-          <div className='img-container'>
-            {image ? (
-              <img src={image} alt='Placeholder' />
-            ) : (
-              <img
-                src='https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png'
-                alt='Placeholder'
-              />
-            )}
-          </div>
-          <div className='profile-details'>
-            <div>
-              <h2>
-                {firstName} {lastName}
-              </h2>
+      <div>
+        <div className='mui-container'>
+          <div className='mui-panel text-center'>
+            <div className='img-container'>
+              {image ? (
+                <img src={image} alt='Placeholder' />
+              ) : (
+                <img
+                  src='https://www.manufacturingusa.com/sites/manufacturingusa.com/files/default.png'
+                  alt='Placeholder'
+                />
+              )}
             </div>
-            <div>
-              <p>
-                <span className='info-label'>Username: </span>
-                {username}
-              </p>
-              <p>
-                <span className='info-label'>Phone Number: </span>
-                {phone}
-              </p>
-              <p>
-                <span className='info-label'>E-Mail: </span>
-                {email}
-              </p>
-              <span className='info-label'>Bio</span>
-              <p>{bio}</p>
+            <div className='profile-details'>
+              <div>
+                <h2>
+                  {firstName} {lastName}
+                </h2>
+              </div>
+              <div>
+                <p>
+                  <span className='info-label'>Username: </span>
+                  {username}
+                </p>
+                <p>
+                  <span className='info-label'>Phone Number: </span>
+                  {phone}
+                </p>
+                <p>
+                  <span className='info-label'>E-Mail: </span>
+                  {email}
+                </p>
+                <span className='info-label'>Bio</span>
+                <p>{bio}</p>
 
-              {// if user is on his profile, display 'Edit' button
-              this.state.currentUser ? (
-                <div>
-                  <Link to={`/user/edit/${_id}`}>
-                    <button className='btn-round'>
-                      <i className='material-icons'>edit</i>
-                    </button>
-                  </Link>
-                </div>
-              ) : null}
+                {// if user is on his profile, display 'Edit' and Delete button
+                this.state.currentUser ? (
+                  <div>
+                    <Link to={`/user/edit/${_id}`}>
+                      <button className='mg-5 mui-btn mui-btn--raised mui-btn--primary'>
+                        Edit{" "}
+                      </button>
+                    </Link>
+                    <Link to={`/signup`}>
+                      <button
+                        className='mg-5 mui-btn mui-btn--raised mui-btn--danger'
+                        onClick={() => {
+                          this.deleteUser();
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </Link>
+                  </div>
+                ) : null}
+              </div>
             </div>
           </div>
-
-          <div className='party-profile-block'>
-            <ul>
-              <h3 style={{ color: "white", marginTop: "20px" }}>Organizing Parties</h3>
-              {this.state.organizing.map((el, index) => {
-                return <PartyCard key={index} {...el} />;
-              })}
-            </ul>
-          </div>
-
-          <div className='party-profile-block'>
-            <ul>
-              <h3 style={{ color: "white", marginTop: "20px" }}>Attending Parties</h3>
-              {this.state.attending.map((el, index) => {
-                return <PartyCard key={index} {...el} />;
-              })}
-            </ul>
-          </div>
-          <BottomNavbar />
         </div>
+
+        <div className='container'>
+          <ul>
+            <h3 style={{ color: "white", marginTop: "20px", textAlign: "center" }}>
+              Organizing Parties
+            </h3>
+            {this.state.organizing.map((el, index) => {
+              return <PartyCard key={index} {...el} />;
+            })}
+          </ul>
+        </div>
+        <BottomNavbar />
       </div>
     );
   }

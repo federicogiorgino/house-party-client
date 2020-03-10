@@ -42,8 +42,7 @@ class ShowParties extends Component {
     partiesService
       .getOne(id)
       .then(party => {
-        const guests = party.guests;
-        this.setState({ party, guests });
+        this.setState({ party });
       })
       .catch(error => console.log(error));
   }
@@ -90,66 +89,99 @@ class ShowParties extends Component {
       d = dd + "/" + mm + "/" + yyyy;
       return d;
     };
-    const { host, title, description, guestLimit, city, address, date, image } = this.state.party;
+
+    const {
+      host,
+      title,
+      description,
+      guestLimit,
+      city,
+      address,
+      date,
+      image,
+      guests
+    } = this.state.party;
 
     const MY_API = "AIzaSyBqaknflCPQt5yCLxe4U8SbQmR_y36kb1g";
     let url = `https://www.google.com/maps/embed/v1/search?q=${address},+${city}&key=${MY_API}`;
 
     return (
-      <div>
-        <div className='event-container'>
+      <div className='mui-container'>
+        <div className='mui-panel'>
           <div className='img-box'>
             {image ? (
               <img src={image} alt='' height='40%' />
             ) : (
               <img
-                src='https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/generic_three_quarter_width/public/article-images/127863/embedded-1493821379.jpg?itok=b_14tLV_'
+                src='https://www.americanexpress.lk/images/placeholder-600x600.jpg'
                 alt=''
                 height='40%'
               />
             )}
           </div>
-
           <div className='event-info'>
             <div className='event-info-specific'>
-              <label>Party Name: </label>
-              <p> {title}</p>
+              <p> Party Name: {title}</p>
             </div>
 
             <div className='event-info-specific'>
-              <label>Description: </label>
-              <p> {description}</p>
+              <p>Description: {description}</p>
             </div>
 
             <div className='event-info-specific'>
-              <label>Guests: </label>
               <p>
-                {this.state.guests.length}/{guestLimit}
+                Guests: {this.state.guests.length}/{guestLimit}
               </p>
             </div>
 
             <div className='event-info-specific'>
-              <label>Where: </label>
               <p>
-                {city}, {address}
+                Where: {city}, {address}
               </p>
             </div>
 
             <div className='event-info-specific'>
-              <label>When: </label>
-              <p>{formatDate(date)}</p>
+              <p>When: {formatDate(date)}</p>
             </div>
 
-            <div className='chip-container'>
-              <div className='chip'>
-                <span className='chip-name'>
-                  <Link to={`/user/${host}`}>Host: {host}</Link>
+            {host ? (
+              <div className='chip-container'>
+                <p>Hosted By</p>
+                <span class='mdl-chip mdl-chip--contact'>
+                  <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                    <img class='mdl-chip__contact' src={host.image} alt=''></img>
+                  </span>
+                  <span class='mdl-chip__text'>
+                    <Link to={`/user/${host._id}`}>
+                      {host.firstName} {host.lastName}
+                    </Link>
+                  </span>
                 </span>
-                <span className='chip-button-close' role='button'></span>
               </div>
-            </div>
+            ) : null}
           </div>
 
+          {console.log("guests", this.state.party.guests)}
+          {/* <div>
+            {guests.map((guest, index) => {
+              return (
+                <ul>
+                  <li key={index}>{guest._id}</li>
+                </ul>
+
+                // <span class='mdl-chip mdl-chip--contact'>
+                //   <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                //     <img class='mdl-chip__contact' src={host.image} alt=''></img>
+                //   </span>
+                //   <span class='mdl-chip__text'>
+                //     <Link to={`/user/${host}`}>
+                //       {guest.firstName} {guest.lastName}
+                //     </Link>
+                //   </span>
+                // </span>
+              );
+            })}
+          </div> */}
           <div className='map'>
             <iframe
               title='myMap'
@@ -158,11 +190,11 @@ class ShowParties extends Component {
               src={url}
             ></iframe>
           </div>
-
           {this.state.partyJoined ? (
             <div>
               <button
-                className='pure-red pure-material-button-contained'
+                className='mui-btn mui-btn--raised mui-btn--danger'
+                type='submit'
                 onClick={() => {
                   this.leave();
                 }}
@@ -173,7 +205,8 @@ class ShowParties extends Component {
           ) : (
             <div>
               <button
-                className='pure-material-button-contained'
+                className='mui-btn mui-btn--raised mui-btn--primary'
+                type='submit'
                 onClick={() => {
                   this.join();
                 }}

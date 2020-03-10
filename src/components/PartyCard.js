@@ -23,45 +23,36 @@ class PartyCard extends Component {
   render() {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
-      <div className='party-card'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 party-card'>
-              <div className='card'>
-                <div className='image'>
-                  {image ? (
-                    <img src={image} width='100%' />
-                  ) : (
-                    <img
-                      src='https://zone1-ibizaspotlightsl.netdna-ssl.com/sites/default/files/styles/generic_three_quarter_width/public/article-images/127863/embedded-1493821379.jpg?itok=b_14tLV_'
-                      width='100%'
-                    />
-                  )}
+      <div className='mui-container'>
+          <div class='demo-card-wide mdl-card mdl-shadow--2dp'>
+            <div
+              class='mdl-card__title'
+              style={{
+                background: `url( ${
+                  image ? image : "https://www.americanexpress.lk/images/placeholder-600x600.jpg"
+                } `
+              }}
+            ></div>
+            <div class='mdl-card__supporting-text'>
+              <h3>{title}</h3>
+              <p>
+                Max Guests {guestLimit} - {city} - {this.formatDate(date)}
+              </p>
+              {host.firstName ? (
+                <div className='chip-container'>
+                  <p>Hosted By</p>
+                  <span class='mdl-chip mdl-chip--contact'>
+                    <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                      <img class='mdl-chip__contact' src={host.image} alt=''></img>
+                    </span>
+                    <span class='mdl-chip__text'>
+                      {host.firstName} {host.lastName}
+                    </span>
+                  </span>
                 </div>
-
-                <div className='text'>
-                  <div className='fab'>
-                    <Link to={`/parties/${_id}`}>&#43; </Link>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>Max Guests {guestLimit}</p>
-                  <p>
-                    {city} - {this.formatDate(date)}
-                  </p>
-                  <div className='chip-container'>
-                    <p>Host</p>
-                    <div className='chip'>
-                      <img src='https://s3.amazonaws.com/uifaces/faces/twitter/rogie/48.jpg' />
-                      <span className='chip-name'>{host}</span>
-                      <span className='chip-button-close' role='button'>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ) : null}
             </div>
           </div>
-        </div>
       </div>
     );
   }

@@ -13,15 +13,14 @@ import CreateParty from "./pages/CreateParty";
 import ListParties from "./pages/ListParties";
 import ShowParties from "./pages/ShowParties";
 
-import Navbar from "./components/Navbar";
 import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
+import FilteredParties from "./pages/FilteredParties";
 
 class App extends Component {
   render() {
     return (
       <div className='App'>
-        {/* <Navbar /> */}
         <Switch>
           {/* anon routes */}
           <AnonRoute exact path='/' component={Home} />
@@ -32,8 +31,9 @@ class App extends Component {
           <PrivateRoute exact path='/user/:id' component={ShowUsers} />
           <PrivateRoute exact path='/user/edit/:id' component={EditUsers} />
           <PrivateRoute exact path='/parties/create' component={CreateParty} />
-          <PrivateRoute exact path='/parties' component={ListParties} />
           <PrivateRoute exact path='/parties/:id' component={ShowParties} />
+          <PrivateRoute exact path='/parties' component={ListParties} />
+          <PrivateRoute exact path='/parties/city/:city' component={FilteredParties} />
         </Switch>
       </div>
     );

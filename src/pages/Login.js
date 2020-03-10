@@ -22,39 +22,41 @@ class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      <div className='bg'>
-        <div className='auth-container'>
-          <h1>Login</h1>
-          <div className='login-form'>
-            <form onSubmit={this.handleFormSubmit}>
-              <div>
-                <input
-                  type='text'
-                  name='username'
-                  placeholder='Username'
-                  value={username}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <input
-                  type='password'
-                  name='password'
-                  placeholder='Password'
-                  value={password}
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div>
-                <input className='pure-material-button-contained' type='submit' value='Login' />
-              </div>
-            </form>
-            <br />
-            <div className='already-section'>
-              <p>
-                Don't have an account? <Link to={"/signup"}> Signup</Link>
-              </p>
+      <div className='mui-container p-20'>
+        <div className='mui-panel '>
+          <form onSubmit={this.handleFormSubmit}>
+            <h1>Login</h1>
+            <div className='mui-textfield'>
+              <input
+                type='text'
+                name='username'
+                placeholder='Username'
+                value={username}
+                onChange={this.handleChange}
+              />
             </div>
+            <div className='mui-textfield'>
+              <input
+                type='password'
+                name='password'
+                placeholder='Password'
+                value={password}
+                onChange={this.handleChange}
+              />
+            </div>
+            <div>
+              <input
+                className='mui-btn mui-btn--raised mui-btn--primary'
+                type='submit'
+                value='Login'
+              />
+            </div>
+          </form>
+          <br />
+          <div>
+            <p>
+              Don't have an account? <Link to={"/signup"}> Signup</Link>
+            </p>
           </div>
         </div>
       </div>
