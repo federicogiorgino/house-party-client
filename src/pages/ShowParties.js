@@ -14,8 +14,7 @@ class ShowParties extends Component {
     this.state = {
       party: {},
       //will set the switch between Join and leave party
-      partyJoined: false,
-      guests: []
+      partyJoined: false
     };
   }
 
@@ -42,6 +41,7 @@ class ShowParties extends Component {
     partiesService
       .getOne(id)
       .then(party => {
+        //sets the state party to an object with the property of the party with the id from the endpoint
         this.setState({ party });
       })
       .catch(error => console.log(error));
@@ -90,29 +90,16 @@ class ShowParties extends Component {
       return d;
     };
 
-    const {
-      host,
-      title,
-      description,
-      guestLimit,
-      city,
-      address,
-      date,
-      image,
-      guests
-    } = this.state.party;
-
-    const MY_API = "AIzaSyBqaknflCPQt5yCLxe4U8SbQmR_y36kb1g";
-    let url = `https://www.google.com/maps/embed/v1/search?q=${address},+${city}&key=${MY_API}`;
+    let url = `https://www.google.com/maps/embed/v1/search?q=${this.state.party.address},+${this.state.party.city}&key=${process.env.REACT_APP_GOOGLE_MAPS}`;
 
     return (
       <div className='mui-container'>
         <div className='mui-panel'>
           <div className='event-info'>
-            <h1 style={{ fontWeight: "700" }}>{title}</h1>
+            <h1 style={{ fontWeight: "700" }}>{this.state.party.title}</h1>
             <div className='img-box'>
-              {image ? (
-                <img src={image} alt='' height='40%' />
+              {this.state.party.image ? (
+                <img src={this.state.party.image} alt='' height='40%' />
               ) : (
                 <img
                   src='https://www.americanexpress.lk/images/placeholder-600x600.jpg'
@@ -125,43 +112,49 @@ class ShowParties extends Component {
             <div className='event-info-specific'>
               <p>
                 <span>Description: </span>
-                {description}
+                {this.state.party.description}
               </p>
             </div>
 
             <div className='event-info-specific'>
               <p>
                 <span>Guests: </span>
-                {this.state.guests.length}/{guestLimit}
+                {this.state.party.guests
+                  ? `${this.state.party.guests.length} / ${this.state.party.guestLimit}`
+                  : null}
               </p>
             </div>
 
             <div className='event-info-specific'>
               <p>
                 <span>Where: </span>
-                {city}, {address}
+                {this.state.party.city}, {this.state.party.address}
               </p>
             </div>
 
             <div className='event-info-specific'>
               <p>
                 <span>When: </span>
-                When: {formatDate(date)}
+                When: {formatDate(this.state.party.date)}
               </p>
             </div>
 
-            {host ? (
+            {this.state.party.host ? (
               <div
                 className='chip-container'
                 style={{ display: "flex", flexWrap: "nowrap", width: "100%" }}
               >
                 <span className='mdl-chip mdl-chip--contact'>
                   <span className='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
-                    <img className='mdl-chip__contact' src={host.image} alt=''></img>
+                    <img
+                      className='mdl-chip__contact'
+                      src={this.state.party.host.image}
+                      alt=''
+                    ></img>
                   </span>
                   <span className='mdl-chip__text'>
-                    <Link to={`/user/${host._id}`}>
-                      {host.firstName} {host.lastName}
+                    <Link to={`/user/${this.state.party.host._id}`}>
+                      {this.state.party.host.firstName} {this.state.party.host.lastName}
                     </Link>
                   </span>
                 </span>
@@ -169,27 +162,43 @@ class ShowParties extends Component {
             ) : null}
           </div>
 
-          {console.log("guests", this.state.party.guests)}
-          {/* <div>
-            {guests.map((guest, index) => {
-              return (
-                <ul>
-                  <li key={index}>{guest._id}</li>
-                </ul>
+          <div>
+            {this.state.party.guests
+              ? this.state.party.guests.map((guest, index) => {
+                  return (
+                    <ul>
+                      <h6>Who is coming</h6>
+                      <div
+                        className='chip-container'
+                        style={{ display: "flex", flexWrap: "nowrap", width: "100%" }}
+                      >
+                        <span className='mdl-chip mdl-chip--contact'>
+                          <span className='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                            <img className='mdl-chip__contact' src={guest.image} alt=''></img>
+                          </span>
+                          <span className='mdl-chip__text'>
+                            <Link to={`/user/${this.state.party.host._id}`}>
+                              {guest.firstName} {guest.lastName}
+                            </Link>
+                          </span>
+                        </span>
+                      </div>
+                    </ul>
 
-                // <span class='mdl-chip mdl-chip--contact'>
-                //   <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
-                //     <img class='mdl-chip__contact' src={host.image} alt=''></img>
-                //   </span>
-                //   <span class='mdl-chip__text'>
-                //     <Link to={`/user/${host}`}>
-                //       {guest.firstName} {guest.lastName}
-                //     </Link>
-                //   </span>
-                // </span>
-              );
-            })}
-          </div> */}
+                    // <span class='mdl-chip mdl-chip--contact'>
+                    //   <span class='mdl-chip__contact mdl-color--teal mdl-color-text--white'>
+                    //     <img class='mdl-chip__contact' src={host.image} alt=''></img>
+                    //   </span>
+                    //   <span class='mdl-chip__text'>
+                    //     <Link to={`/user/${host}`}>
+                    //       {guest.firstName} {guest.lastName}
+                    //     </Link>
+                    //   </span>
+                    // </span>
+                  );
+                })
+              : null}
+          </div>
           <div className='map'>
             <iframe
               title='myMap'

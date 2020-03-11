@@ -24,22 +24,23 @@ class PartyCard extends Component {
     const { _id, title, guestLimit, city, date, host, image } = this.props;
     return (
       <div className='mui-container'>
-        <div className='demo-card-wide mdl-card mdl-shadow--2dp'>
-          <div
-            className='mdl-card__title'
-            style={{
-              background: `url( ${
-                image ? image : "https://www.americanexpress.lk/images/placeholder-600x600.jpg"
-              } `,
-              backgroundSize: "contain"
-            }}
-          ></div>
-          <div className='mdl-card__supporting-text'>
-            <h3>{title}</h3>
-            <p>
-              Max Guests {guestLimit} - {city} - {this.formatDate(date)}
-            </p>
-            {host ? (
+        {host ? (
+          <div className='demo-card-wide mdl-card mdl-shadow--2dp'>
+            <div
+              className='mdl-card__title'
+              style={{
+                background: `url( ${
+                  image ? image : "https://www.americanexpress.lk/images/placeholder-600x600.jpg"
+                } `,
+                backgroundSize: "contain"
+              }}
+            ></div>
+            <div className='mdl-card__supporting-text'>
+              <h3>{title}</h3>
+              <p>
+                Max Guests {guestLimit} - {city} - {this.formatDate(date)}
+              </p>
+
               <div className='chip-container'>
                 <p>Hosted By</p>
                 <span className='mdl-chip mdl-chip--contact'>
@@ -51,9 +52,9 @@ class PartyCard extends Component {
                   </span>
                 </span>
               </div>
-            ) : null}
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
     );
   }

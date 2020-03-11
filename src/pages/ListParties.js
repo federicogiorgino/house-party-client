@@ -23,7 +23,7 @@ class ListParties extends Component {
 
   render() {
     return (
-      <div>
+      <div className='m-bot-20'>
         <div className='mui-container'>
           <div className='mui-panello'>
             {this.state.partiesList

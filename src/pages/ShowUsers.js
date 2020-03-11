@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { withAuth } from "../lib/Auth";
 import BottomNavbar from "../components/BottomNavbar";
-import PartyCard from "../components/PartyCard";
+import SimplifiedPartyCard from "../components/SimplifiedPartyCard";
 
 class ShowUsers extends Component {
   constructor(props) {
@@ -30,7 +30,6 @@ class ShowUsers extends Component {
         const attending = user.attending;
 
         this.setState({ user, organizing, attending });
-        console.log("organizing", organizing);
       })
       .catch(error => {
         console.log(error);
@@ -68,7 +67,7 @@ class ShowUsers extends Component {
     const { firstName, lastName, username, email, bio, image, phone, _id } = this.state.user;
 
     return (
-      <div>
+      <div className='m-bot-20'>
         <div className='mui-container p-10'>
           <div className='mui-panel text-center'>
             <div className='img-container'>
@@ -124,13 +123,28 @@ class ShowUsers extends Component {
 
         <div className='container'>
           <ul>
-            <h3 style={{ color: "white", marginTop: "20px", textAlign: "center" }}>
+            <h3 style={{ color: "white", margin: "20px 0", fontWeight: "700", marginLeft: "20px" }}>
               Organizing Parties
             </h3>
             {this.state.organizing.map((party, index) => {
               return (
                 <Link key={index} to={`/parties/${party._id}`}>
-                  <PartyCard key={index} {...party} />
+                  <SimplifiedPartyCard key={index} {...party} />
+                </Link>
+              );
+            })}
+          </ul>
+        </div>
+
+        <div className='container'>
+          <ul>
+            <h3 style={{ color: "white", margin: "20px 0", fontWeight: "700", marginLeft: "20px" }}>
+              Attending Parties
+            </h3>
+            {this.state.attending.map((party, index) => {
+              return (
+                <Link key={index} to={`/parties/${party._id}`}>
+                  <SimplifiedPartyCard key={index} {...party} />
                 </Link>
               );
             })}

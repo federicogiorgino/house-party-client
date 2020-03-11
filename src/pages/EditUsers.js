@@ -106,7 +106,11 @@ class EditUsers extends Component {
               <label>Profile Picture</label>
               <input type='file' name='image' onChange={this.imageHandler} />
             </div>
-            <button className='mui-btn mui-btn--raised mui-btn--primary' type='submit'>
+            <button
+              className='mui-btn mui-btn--raised mui-btn--primary'
+              type='submit'
+              disabled={!this.state.imageReady}
+            >
               Save
             </button>
           </form>

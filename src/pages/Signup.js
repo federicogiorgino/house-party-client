@@ -30,6 +30,7 @@ class Signup extends Component {
                 name='firstName'
                 placeholder='First Name'
                 value={firstName}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -39,6 +40,7 @@ class Signup extends Component {
                 name='lastName'
                 placeholder='Last Name'
                 value={lastName}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -48,6 +50,7 @@ class Signup extends Component {
                 name='email'
                 placeholder='E-Mail'
                 value={email}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -57,6 +60,7 @@ class Signup extends Component {
                 name='username'
                 placeholder='Username'
                 value={username}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -66,6 +70,7 @@ class Signup extends Component {
                 name='password'
                 placeholder='Password'
                 value={password}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -75,6 +80,7 @@ class Signup extends Component {
                 name='bio'
                 placeholder='Tell us something about yourself'
                 value={bio}
+                required
                 onChange={this.handleChange}
               />
             </div>

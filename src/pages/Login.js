@@ -32,6 +32,7 @@ class Login extends Component {
                 name='username'
                 placeholder='Username'
                 value={username}
+                required
                 onChange={this.handleChange}
               />
             </div>
@@ -41,6 +42,7 @@ class Login extends Component {
                 name='password'
                 placeholder='Password'
                 value={password}
+                required
                 onChange={this.handleChange}
               />
             </div>

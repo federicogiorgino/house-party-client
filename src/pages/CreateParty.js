@@ -64,6 +64,7 @@ class CreateParty extends Component {
                 type='text'
                 name='title'
                 value={title}
+                required
                 onChange={this.changeHandler}
               />
             </div>
@@ -74,6 +75,7 @@ class CreateParty extends Component {
                 type='text'
                 name='description'
                 value={description}
+                required
                 onChange={this.changeHandler}
               />
             </div>
@@ -84,6 +86,7 @@ class CreateParty extends Component {
                 type='number'
                 name='guestLimit'
                 value={guestLimit}
+                required
                 onChange={this.changeHandler}
               />
             </div>
@@ -109,6 +112,7 @@ class CreateParty extends Component {
                   type='text'
                   name='address'
                   value={address}
+                  required
                   onChange={this.changeHandler}
                 />
               </div>
@@ -130,6 +134,7 @@ class CreateParty extends Component {
                   type='date'
                   name='date'
                   value={date}
+                  required
                   onChange={this.changeHandler}
                 />
               </div>
